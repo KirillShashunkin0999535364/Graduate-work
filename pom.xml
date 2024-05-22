@@ -15,8 +15,8 @@
     </modules>
 
     <properties>
-        <sonar.organization>yashmerino</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.organization>TestR</sonar.organization>
+        <sonar.host.url>https://test.io</sonar.host.url>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
