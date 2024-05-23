@@ -11,3 +11,4 @@ INSERT INTO categories (id, name) VALUES (6, 'Household Items');
 INSERT INTO categories (id, name) VALUES (7, 'Media');
 INSERT INTO categories (id, name) VALUES (8, 'Pet Care');
 INSERT INTO categories (id, name) VALUES (9, 'Office equipment');
+
