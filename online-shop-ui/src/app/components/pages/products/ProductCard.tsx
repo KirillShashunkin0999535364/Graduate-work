@@ -108,7 +108,7 @@ const ProductCard = ({ id, title, price, categories, description }: ProductCardP
           <Box margin="0 5%" width="22vh">
             <Typography variant="body2" fontSize={10} sx={{ marginTop: "3%", lineHeight: "1", overflow: "hidden", overflowWrap: "break-word" }}>{categories && categories.length > 0 ? categories[0].name : getTranslation(lang, "no_category")}</Typography>
             <Typography variant="body1" sx={{ marginTop: "2.5%", height: "3.3vh", lineHeight: "1", overflow: "hidden", overflowWrap: "break-word" }}>{title}</Typography>
-            <Typography variant="body1" fontWeight={800} sx={{ marginTop: "2.5%", height: "3vh", lineHeight: "1", overflow: "hidden", overflowWrap: "break-word" }}>{price + "€"}</Typography>
+            <Typography variant="body1" fontWeight={800} sx={{ marginTop: "2.5%", height: "3vh", lineHeight: "1", overflow: "hidden", overflowWrap: "break-word" }}>{price + "Грн"}</Typography>
           </Box>
         </Box>
       </div>

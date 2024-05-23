@@ -47,7 +47,6 @@ const AddProductPage = () => {
     const [fetchedCategories, setFetchedCategories] = React.useState<Category[]>([]);
     const [inputErrors, setInputErrors] = React.useState<InputError[]>([]);
     const [isSuccess, setSuccess] = React.useState(false);
-
     const [photo, setPhoto] = React.useState(NoPhoto);
     const [file, setFile] = React.useState<File | null>(null);
 

@@ -11,7 +11,6 @@ import Product from './Product';
 import { useAppSelector } from '../../../hooks';
 import { useNavigate } from 'react-router-dom';
 import { Paper, Typography } from '@mui/material';
-import Banner from "../../../../img/banner.jpg";
 import { getTranslation } from '../../../../i18n/i18n';
 
 const ProductsContainer = () => {
@@ -20,7 +19,7 @@ const ProductsContainer = () => {
 
   const [products, setProducts] = React.useState<Product[]>([]);
   const navigate = useNavigate();
-
+  console.log(products)
   React.useEffect(() => {
     const token = jwt.token;
 
@@ -40,6 +39,7 @@ const ProductsContainer = () => {
   }, []);
 
   return (
+
     <Container component="main" maxWidth={false} id="main-container" sx={{ height: "100vh" }} disableGutters>
       <Header />
       <Paper square elevation={3} sx={{ width: "70%", pb: "1.5%", margin: "auto", mt: "2.5%", display: "flex", overflow: "hidden" }}>
@@ -50,6 +50,8 @@ const ProductsContainer = () => {
           {products.length <= 0 &&
             <Typography variant="h4" sx={{ margin: "auto", mt: "5%", mb: "3.5%" }}>{getTranslation(lang, "no_products_found")}</Typography>
           }
+
+
         </Grid>
       </Paper>
       <Copyright />
