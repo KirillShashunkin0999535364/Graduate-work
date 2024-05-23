@@ -20,6 +20,11 @@
         <val lang="RU">Цена:</val>
         <val lang="UKR">Ціна:</val>
     </key>
+    <key value="logout">
+        <val lang="ENG">Logout</val>
+        <val lang="RU">Выход:</val>
+        <val lang="UKR">Вихід:</val>
+    </key>
     <key value="delete">
         <val lang="ENG">Delete</val>
         <val lang="RU">Удалить</val>

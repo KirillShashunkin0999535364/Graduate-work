@@ -127,8 +127,6 @@ const MyProfilePage = () => {
                         <Box maxWidth={"30%"} sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                             <Typography sx={{ fontSize: 20, mt: "35%", fontWeight: "200", wordWrap: "break-word" }} textAlign={"right"} lineHeight={1}>{getTranslation(lang, "username")}</Typography>
                             <Typography sx={{ fontSize: 20, fontWeight: "200", wordWrap: "break-word" }} textAlign={"right"} lineHeight={1}>{getTranslation(lang, "email")}</Typography>
-                            <Typography sx={{ fontSize: 20, fontWeight: "200", wordWrap: "break-word" }} textAlign={"right"} lineHeight={1}>{getTranslation(lang, "address")}</Typography>
-                            <Typography sx={{ fontSize: 20, mb: "35%", fontWeight: "200", wordWrap: "break-word" }} textAlign={"right"} lineHeight={1}>{getTranslation(lang, "phone")}</Typography>
                         </Box>
                         <Box width={"5%"}>
                             <Divider orientation="vertical" />
@@ -162,26 +160,6 @@ const MyProfilePage = () => {
                                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                     setEmail(event.target.value);
                                 }}
-                            />
-                            <TextField
-                                margin="normal"
-                                fullWidth
-                                name="address"
-                                label={getTranslation(lang, "address")}
-                                type="address"
-                                id="address"
-                                data-testid="address"
-                                autoComplete="current-address"
-                            />
-                            <TextField
-                                margin="normal"
-                                fullWidth
-                                name="phone"
-                                label={getTranslation(lang, "phone")}
-                                type="phone"
-                                id="phone"
-                                data-testid="phone"
-                                autoComplete="current-phone"
                             />
                         </Box>
                     </Paper>

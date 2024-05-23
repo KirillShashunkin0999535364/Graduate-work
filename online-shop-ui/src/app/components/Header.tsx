@@ -243,7 +243,7 @@ const Header = () => {
                             onClose={handleCloseUserMenu}
                         >
                             <MenuItem onClick={handleProfile}>{getTranslation(lang, "profile")}</MenuItem>
-                            <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                            <MenuItem onClick={handleLogout}>{getTranslation(lang, "logout")}</MenuItem>
                             <InputLabel sx={{ textAlign: "center", fontSize: "15px" }} id="select-language-label">{getTranslation(lang, "language")}</InputLabel>
                             <Select
                                 sx={{ width: '150px', margin: "0 15px" }}

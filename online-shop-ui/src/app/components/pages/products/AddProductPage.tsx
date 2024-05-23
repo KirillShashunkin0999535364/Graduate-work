@@ -15,10 +15,8 @@ import { InputError, isFieldPresentInInputErrors } from '../../../utils/InputErr
 import InputFields from '../../../utils/InputFields';
 import NoPhoto from "../../../../img/no_photo.jpg";
 import AddIcon from '@mui/icons-material/Add';
-
 import Header from '../../Header';
 import Copyright from '../../footer/Copyright';
-
 import { useNavigate } from 'react-router-dom';
 import { getTranslation } from '../../../../i18n/i18n';
 import { getCategories } from '../../../api/CategoryRequest';
@@ -42,13 +40,11 @@ const AddProductPage = () => {
     const roles = useAppSelector(state => state.info.info.roles);
     const jwt = useAppSelector(state => state.jwt);
     const navigate = useNavigate();
-
     const [name, setName] = React.useState("");
     const [description, setDescription] = React.useState("");
     const [price, setPrice] = React.useState(0.1);
     const [categories, setCategories] = React.useState<string[]>([]);
     const [fetchedCategories, setFetchedCategories] = React.useState<Category[]>([]);
-
     const [inputErrors, setInputErrors] = React.useState<InputError[]>([]);
     const [isSuccess, setSuccess] = React.useState(false);
 
@@ -74,7 +70,7 @@ const AddProductPage = () => {
             setFetchedCategories(categoriesRequest);
         }
 
-        fetchCategories(); // NOSONAR: It should not await.
+        fetchCategories();
     }, [categories]);
 
     const handleSubmit = async () => {

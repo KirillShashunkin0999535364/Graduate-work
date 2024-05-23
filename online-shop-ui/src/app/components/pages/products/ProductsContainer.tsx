@@ -42,9 +42,6 @@ const ProductsContainer = () => {
   return (
     <Container component="main" maxWidth={false} id="main-container" sx={{ height: "100vh" }} disableGutters>
       <Header />
-      <Paper square elevation={6} sx={{ width: "70%", margin: "auto", mt: "2.5%", display: "flex" }}>
-        <img width="100%" height="100%" alt="banner" src={Banner} />
-      </Paper>
       <Paper square elevation={3} sx={{ width: "70%", pb: "1.5%", margin: "auto", mt: "2.5%", display: "flex", overflow: "hidden" }}>
         <Grid container justifyContent="center" alignItems="center" columnGap={4}>
           {products.length > 0 && products.map(product => {

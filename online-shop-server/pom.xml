@@ -14,16 +14,16 @@
     <name>online-shop-server</name>
     <properties>
         <sonar.coverage.exclusions>
-            src/main/java/com/yashmerino/online/shop/exceptions/*.java,
-            src/main/java/com/yashmerino/online/shop/model/*.java,
-            src/main/java/com/yashmerino/online/shop/model/base/*.java,
-            src/main/java/com/yashmerino/online/shop/model/dto/*.java,
-            src/main/java/com/yashmerino/online/shop/model/dto/auth/*.java,
-            src/main/java/com/yashmerino/online/shop/security/*.java,
-            src/main/java/com/yashmerino/online/shop/swagger/*.java,
-            src/main/java/com/yashmerino/online/shop/services/AlgoliaService.java,
-            src/main/java/com/yashmerino/online/shop/Initializer.java,
-            src/main/java/com/yashmerino/online/shop/OnlineShopServerApplication.java
+            src/main/java/com/online/shop/exceptions/*.java,
+            src/main/java/com/online/shop/model/*.java,
+            src/main/java/com/online/shop/model/base/*.java,
+            src/main/java/com/online/shop/model/dto/*.java,
+            src/main/java/com/online/shop/model/dto/auth/*.java,
+            src/main/java/com/online/shop/security/*.java,
+            src/main/java/com/online/shop/swagger/*.java,
+            src/main/java/com/online/shop/services/AlgoliaService.java,
+            src/main/java/com/online/shop/Initializer.java,
+            src/main/java/com/online/shop/OnlineShopServerApplication.java
         </sonar.coverage.exclusions>
         <java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>
