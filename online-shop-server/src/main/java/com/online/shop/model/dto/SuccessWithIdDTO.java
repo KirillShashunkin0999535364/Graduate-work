@@ -9,19 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SuccessWithIdDTO {
-
-    /**
-     * HTTP status.
-     */
     private int status;
-
-    /**
-     * Message.
-     */
     private String message;
-
-    /**
-     * Object's id.
-     */
     private Long id;
 }

@@ -9,14 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SuccessDTO {
-
-    /**
-     * HTTP status.
-     */
     private int status;
-
-    /**
-     * Message.
-     */
     private String message;
 }

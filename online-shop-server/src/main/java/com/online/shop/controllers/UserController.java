@@ -117,13 +117,6 @@ public class UserController {
         return new ResponseEntity<>(photo, HttpStatus.OK);
     }
 
-    /**
-     * Оновлює інформацію про користувача.
-     *
-     * @param username    це ім'я користувача.
-     * @param userDTO     це оновлена інформація про користувача.
-     * @return <code>ResponseEntity</code>
-     */
     @Operation(summary = "Оновлює інформацію про користувача.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = SwaggerHttpStatus.OK, description = SwaggerMessages.USER_INFO_UPDATED,

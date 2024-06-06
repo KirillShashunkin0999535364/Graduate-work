@@ -72,8 +72,13 @@ public class UserServiceImpl implements UserService {
         UserInfoDTO userInfoDTO = new UserInfoDTO();
         userInfoDTO.setRoles(user.getRoles());
         userInfoDTO.setEmail(user.getEmail());
+        userInfoDTO.setFirstName(user.getFirstName());
+        userInfoDTO.setLastName(user.getLastName());
+        userInfoDTO.setAddress(user.getAddress());
+        userInfoDTO.setPhoneNumber(user.getPhoneNumber());
         return userInfoDTO;
     }
+
 
     /**
      * Оновлює фото для користувача.
@@ -119,8 +124,14 @@ public class UserServiceImpl implements UserService {
         }
 
         user.setEmail(userDTO.getEmail());
+        user.setFirstName(userDTO.getFirstName());
+        user.setLastName(userDTO.getLastName());
+        user.setAddress(userDTO.getAddress());
+        user.setPhoneNumber(userDTO.getPhoneNumber());
+
         userRepository.save(user);
     }
+
 
 
 

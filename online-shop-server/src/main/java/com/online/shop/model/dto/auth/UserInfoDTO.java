@@ -5,20 +5,14 @@ import lombok.Data;
 
 import java.util.Set;
 
-/**
- * User Information DTO.
- */
+
 @Data
 public class UserInfoDTO {
-
-    /**
-     * User's roles.
-     */
     private Set<Role> roles;
-
-    /**
-     * User's email.
-     */
     private String email;
+    private String firstName;
+    private String lastName;
+    private String address;
+    private String phoneNumber;
 }
 

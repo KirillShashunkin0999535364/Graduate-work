@@ -59,9 +59,13 @@ export const setUserPhoto = async (token: string, username: string, photo: File 
  * @param email The user's email.
  * @returns Response.
  */
-export const updateUser = async (token: string, username: string, email: string) => {
+export const updateUser = async (token: string, username: string, email: string, firstName: string, lastName: string, address: string, phoneNumber: string ) => {
     const userDTO = {
-        email
+        email,
+        firstName,
+        lastName,
+        address,
+        phoneNumber
     };
 
     const response = await fetch(`${API_BASE_URL}/api/user/${username}`, {

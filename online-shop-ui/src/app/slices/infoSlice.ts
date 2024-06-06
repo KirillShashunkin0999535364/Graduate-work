@@ -6,13 +6,21 @@ interface UserInfoType {
         id: number;
         name: string;
     }>,
-    email: string
+    email: string,
+    firstName: string,
+    lastName: string,
+    address: string,
+    phoneNumber: string
 }
 
 const initialState = {
     info: {
         roles: [{ id: 0, name: "null" }],
-        email: ""
+        email: "",
+        firstName: "",
+        lastName: "",
+        address: "",
+        phoneNumber: ""
     }
 }
 

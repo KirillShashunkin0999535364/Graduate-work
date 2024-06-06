@@ -14,17 +14,9 @@ import lombok.Setter;
 @Entity
 @Table(name = "roles")
 public class Role {
-
-    /**
-     * Role's id.
-     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
-    /**
-     * Role's name.
-     */
     @NonNull
     private String name;
 }

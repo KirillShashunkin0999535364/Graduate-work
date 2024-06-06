@@ -23,26 +23,14 @@ import static io.jsonwebtoken.SignatureAlgorithm.HS512;
 @SuppressWarnings("java:S6437")
 public class JwtProvider {
 
-    /**
-     * Application properties.
-     */
     private ApplicationProperties applicationProperties;
 
-    /**
-     * Constructor.
-     *
-     * @param applicationProperties is the application's properties.
-     */
+
     public JwtProvider(ApplicationProperties applicationProperties) {
         this.applicationProperties = applicationProperties;
     }
 
-    /**
-     * Generates a token.
-     *
-     * @param authentication is the authentication object.
-     * @return JWT Token.
-     */
+
     public String generateToken(Authentication authentication) {
         String username = authentication.getName();
         Date currentDate = new Date();
@@ -56,12 +44,7 @@ public class JwtProvider {
                 .compact();
     }
 
-    /**
-     * Returns the username from a JWT Token.
-     *
-     * @param token is the JWT token.
-     * @return the username.
-     */
+
     public String getUsernameFromJWT(final String token) {
         Claims claims = Jwts.parserBuilder()
                 .setSigningKey(getSigningKey())
@@ -72,12 +55,7 @@ public class JwtProvider {
         return claims.getSubject();
     }
 
-    /**
-     * Validates a JWT Token.
-     *
-     * @param token is the JWT token.
-     * @return <code>true</code> if JWT token is valid and <code>false</code> otherwise.
-     */
+
     public boolean validateToken(final String token) {
         try {
             Jwts.parserBuilder().setSigningKey(getSigningKey()).build().parseClaimsJws(token);
@@ -87,11 +65,6 @@ public class JwtProvider {
         }
     }
 
-    /**
-     * Gets signing key from JWT secret.
-     *
-     * @return <code>Key</code>.
-     */
     private Key getSigningKey() {
         byte[] keyBytes = Decoders.BASE64.decode(applicationProperties.jwtSecret);
         return Keys.hmacShaKeyFor(keyBytes);

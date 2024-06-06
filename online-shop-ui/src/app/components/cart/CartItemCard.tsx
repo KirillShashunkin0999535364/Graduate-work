@@ -93,9 +93,9 @@ const CartItemCard = ({ id, productId, title, price, quantity }: CartItemProps) 
       </Box>
       <Typography variant="h6" sx={{ fontWeight: 200, width: "35%", ml: "1.5%", overflow: "hidden", lineHeight: "1", textOverflow: "ellipsis" }}>{title}</Typography>
       <QuantityInput id={id} defaultValue={quantity} handleSaveProduct={handleSaveProduct} />
-      <Typography variant="h6" sx={{ fontWeight: 400, marginLeft: "2%" }}>{price + "€"}</Typography>
+      <Typography variant="h6" sx={{ fontWeight: 400, marginLeft: "2%" }}>{price + "$"}</Typography>
       <IconButton color="error" aria-label="delete from shopping cart" data-testid="delete-icon" sx={{ border: "1px solid", marginLeft: "2%", width: "3.5vh", height: "3.5vh" }} onClick={handleDeleteProduct}>
-        <DeleteIcon />
+        {/*<DeletebIcon />*/}
       </IconButton>
     </Box>
   </>

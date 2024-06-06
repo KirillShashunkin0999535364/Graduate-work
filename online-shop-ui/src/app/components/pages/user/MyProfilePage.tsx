@@ -12,9 +12,10 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import { useNavigate } from 'react-router-dom';
 import { getTranslation } from '../../../../i18n/i18n';
-import { getUserPhoto, setUserPhoto, updateUser } from '../../../api/UserRequest';
+import {getUserInfo, getUserPhoto, setUserPhoto, updateUser} from '../../../api/UserRequest';
 import { useAppSelector, useAppDispatch } from '../../../hooks';
 import * as UserRequest from "../../../api/UserRequest";
+import {useState} from "react";
 
 const MyProfilePage = () => {
     const lang = useAppSelector(state => state.lang.lang);
@@ -22,6 +23,10 @@ const MyProfilePage = () => {
     const username = useAppSelector(state => state.username.sub);
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [address, setAddress] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
 
     const [photo, setPhoto] = React.useState(NoPhoto);
     const [file, setFile] = React.useState<File | null>(null);
@@ -58,8 +63,7 @@ const MyProfilePage = () => {
         setSuccess(false);
         setInputErrors([]);
 
-        const response = await updateUser(jwt, username, email);
-
+        const response = await updateUser(jwt, username, email,firstName,lastName,address,phoneNumber);
         if (response.status) {
             if (response.status == 401) {
                 navigate("/login");
@@ -74,6 +78,8 @@ const MyProfilePage = () => {
         }
 
         dispatch(updateInfo(await UserRequest.getUserInfo(username ?? "")));
+        const userData = await getUserInfo(username ?? "");
+        console.log(userData);
     }
 
     React.useEffect(() => {
@@ -97,6 +103,7 @@ const MyProfilePage = () => {
     return (
         <Container component="main" maxWidth={false} id="my-profile-container" sx={{ height: "100vh" }} disableGutters>
             <Header />
+
             {isSuccess &&
                 <Snackbar open={isSuccess} autoHideDuration={2000} onClose={handleAlertClick}>
                     <Alert onClose={handleAlertClick} id="alert-success" severity="success" sx={{ width: '100%' }}>
@@ -161,6 +168,70 @@ const MyProfilePage = () => {
                                     setEmail(event.target.value);
                                 }}
                             />
+                            <TextField
+                                defaultValue={firstName}
+                                error={isFieldPresentInInputErrors(InputFields.FIRST_NAME, inputErrors)}
+                                margin="normal"
+                                fullWidth
+                                name="firstName"
+                                label={getTranslation(lang, "first_name")}
+                                type="text"
+                                id="firstName"
+                                data-testid="firstName"
+                                autoComplete="given-name"
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setFirstName(event.target.value);
+                                }}
+                            />
+
+                            <TextField
+                                defaultValue={lastName}
+                                error={isFieldPresentInInputErrors(InputFields.LAST_NAME, inputErrors)}
+                                margin="normal"
+                                fullWidth
+                                name="lastName"
+                                label={getTranslation(lang, "last_name")}
+                                type="text"
+                                id="lastName"
+                                data-testid="lastName"
+                                autoComplete="family-name"
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setLastName(event.target.value);
+                                }}
+                            />
+
+                            <TextField
+                                defaultValue={address}
+                                error={isFieldPresentInInputErrors(InputFields.ADDRESS, inputErrors)}
+                                margin="normal"
+                                fullWidth
+                                name="address"
+                                label={getTranslation(lang, "address")}
+                                type="text"
+                                id="address"
+                                data-testid="address"
+                                autoComplete="street-address"
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setAddress(event.target.value);
+                                }}
+                            />
+
+                            <TextField
+                                defaultValue={phoneNumber}
+                                error={isFieldPresentInInputErrors(InputFields.PHONE_NUMBER, inputErrors)}
+                                margin="normal"
+                                fullWidth
+                                name="phoneNumber"
+                                label={getTranslation(lang, "phone_number")}
+                                type="tel"
+                                id="phoneNumber"
+                                data-testid="phoneNumber"
+                                autoComplete="tel"
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setPhoneNumber(event.target.value);
+                                }}
+                            />
+
                         </Box>
                     </Paper>
                     <Button variant="contained" sx={{ marginTop: "2%" }} onClick={handleSaveUser}>

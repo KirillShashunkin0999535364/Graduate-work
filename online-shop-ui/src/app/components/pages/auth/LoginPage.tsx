@@ -16,6 +16,7 @@ import { updateUsername } from '../../../slices/usernameSlice';
 import { parseJwt } from '../../../utils/Utils';
 import { updateInfo } from '../../../slices/infoSlice';
 import { getTranslation } from '../../../../i18n/i18n';
+import {getUserInfo} from "../../../api/UserRequest";
 
 const LoginPage = () => {
   const lang = useAppSelector(state => state.lang.lang);
@@ -43,6 +44,9 @@ const LoginPage = () => {
       dispatch(updateJwt(response.accessToken));
       dispatch(updateUsername(parseJwt(response.accessToken).sub));
       dispatch(updateInfo(await UserRequest.getUserInfo(username ?? "")));
+
+
+
       navigate("/products");
     } else {
       response.fieldErrors && setInputErrors(response.fieldErrors);

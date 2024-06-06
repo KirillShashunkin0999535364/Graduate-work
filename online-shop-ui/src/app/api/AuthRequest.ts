@@ -1,14 +1,6 @@
 
 import { API_BASE_URL } from "../../env-config";
 
-/**
- * API Request to register a new user.
- * @param role User's role.
- * @param email User's email.
- * @param username User's username.
- * @param password User's password.
- * @returns Response.
- */
 export const register = async (role: string, email: string, username: string, password: string) => {
     const registerDTO = {
         role,
@@ -26,12 +18,6 @@ export const register = async (role: string, email: string, username: string, pa
     return response.json();
 }
 
-/**
- * API Request to login a user.
- * @param username User's username.
- * @param password User's password.
- * @returns Response.
- */
 export const login = async (username: string, password: string) => {
     const loginDTO = {
         username,

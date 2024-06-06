@@ -5,18 +5,9 @@ package com.online.shop.utils;
  */
 public enum Role {
 
-    /**
-     * Звичайний користувач (покупець).
-     */
     USER,
 
-    /**
-     * Продавець.
-     */
     SELLER,
 
-    /**
-     * Адміністратор.
-     */
     ADMIN
 }

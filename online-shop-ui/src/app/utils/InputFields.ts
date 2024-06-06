@@ -5,7 +5,11 @@ enum InputFields {
     EMAIL = "email",
     PRICE = "price",
     QUANTITY = "quantity",
-    DESCRIPTION = "description"
+    DESCRIPTION = "description",
+    FIRST_NAME = 'firstName',
+    LAST_NAME = 'lastName',
+    ADDRESS ='address',
+    PHONE_NUMBER ='phoneNumber',
 }
 
 export default InputFields;

@@ -19,7 +19,7 @@ const ProductsContainer = () => {
 
   const [products, setProducts] = React.useState<Product[]>([]);
   const navigate = useNavigate();
-  console.log(products)
+
   React.useEffect(() => {
     const token = jwt.token;
 
