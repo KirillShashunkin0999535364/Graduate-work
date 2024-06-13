@@ -12,9 +12,7 @@ import lombok.Setter;
 
 import java.util.Set;
 
-/**
- * Product DTO.
- */
+
 @Getter
 @Setter
 @JsonPropertyOrder({"objectID", "name", "price", "categories"})

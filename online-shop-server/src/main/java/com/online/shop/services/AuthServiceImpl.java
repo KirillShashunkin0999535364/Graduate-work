@@ -23,52 +23,22 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-/**
- * Реалізація для {@link AuthService}
- */
+
 @Service
 public class AuthServiceImpl implements AuthService {
 
-    /**
-     * Менеджер аутентифікації.
-     */
     private final AuthenticationManager authenticationManager;
 
-    /**
-     * Репозиторій користувачів.
-     */
     private final UserRepository userRepository;
 
-    /**
-     * Репозиторій ролей.
-     */
     private final RoleRepository roleRepository;
 
-    /**
-     * Кодувальник паролів.
-     */
     private final PasswordEncoder passwordEncoder;
 
-    /**
-     * Постачальник JWT токенів.
-     */
     private final JwtProvider jwtProvider;
 
-    /**
-     * Сервіс кошика.
-     */
     private final CartService cartService;
 
-    /**
-     * Конструктор.
-     *
-     * @param authenticationManager менеджер аутентифікації.
-     * @param userRepository        репозиторій користувачів.
-     * @param roleRepository        репозиторій ролей.
-     * @param passwordEncoder       кодувальник паролів.
-     * @param jwtProvider           постачальник JWT токенів.
-     * @param cartService           сервіс кошика.
-     */
     public AuthServiceImpl(AuthenticationManager authenticationManager, UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, JwtProvider jwtProvider, CartService cartService) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
@@ -78,9 +48,6 @@ public class AuthServiceImpl implements AuthService {
         this.cartService = cartService;
     }
 
-    /**
-     * Реєструє користувача.
-     */
     @Override
     public void register(RegisterDTO registerDTO) {
         if (userRepository.existsByUsername(registerDTO.getUsername())) { // NOSONAR - Репозиторій користувачів не може бути null.
@@ -113,12 +80,6 @@ public class AuthServiceImpl implements AuthService {
         cartService.save(cart);
     }
 
-    /**
-     * Автентифікує користувача.
-     *
-     * @param loginDTO DTO для входу.
-     * @return JWT токен.
-     */
     @Override
     public String login(LoginDTO loginDTO) {
         if (!userRepository.existsByUsername(loginDTO.getUsername())) {

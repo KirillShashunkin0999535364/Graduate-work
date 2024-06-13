@@ -14,9 +14,7 @@ import lombok.Setter;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * JPA Entity for a product.
- */
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

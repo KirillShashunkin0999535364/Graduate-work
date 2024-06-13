@@ -16,56 +16,28 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
-/**
- * Реалізація сервісу користувача.
- */
+
 @Service
 public class UserServiceImpl implements UserService {
 
-    /**
-     * Репозиторій користувачів.
-     */
     private final UserRepository userRepository;
 
-    /**
-     * Конструктор для внедрення залежностей.
-     *
-     * @param userRepository це репозиторій користувачів.
-     */
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    /**
-     * Повертає користувача за ідентифікатором.
-     *
-     * @param id це ідентифікатор користувача.
-     * @return <code>User</code> або кидає виняток, якщо користувача не знайдено.
-     */
     @Override
     public User getById(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User not found."));
     }
 
-    /**
-     * Повертає користувача за ім'ям користувача.
-     *
-     * @param username це ім'я користувача.
-     * @return <code>User</code> або кидає виняток, якщо користувача не знайдено.
-     */
     @Override
     public User getByUsername(String username) {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new EntityNotFoundException("username_not_found"));
     }
 
-    /**
-     * Отримати інформацію про користувача за ім'ям користувача.
-     *
-     * @param username це ім'я користувача.
-     * @return <code>UserInfoDTO</code>
-     */
     @Override
     public UserInfoDTO getUserInfo(String username) {
         User user = getByUsername(username);
@@ -80,12 +52,6 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    /**
-     * Оновлює фото для користувача.
-     *
-     * @param username це ім'я користувача.
-     * @param photo    це фото користувача.
-     */
     @Override
     public void updatePhoto(String username, MultipartFile photo) {
         User user = getByUsername(username);
@@ -105,12 +71,6 @@ public class UserServiceImpl implements UserService {
 
         userRepository.save(user);
     }
-    /**
-     * Оновлює інформацію про користувача.
-     *
-     * @param username    це ім'я користувача.
-     * @param userDTO     це оновлена інформація про користувача.
-     */
 
     @Override
     public void updateUser(String username, UserDTO userDTO) {
@@ -131,10 +91,5 @@ public class UserServiceImpl implements UserService {
 
         userRepository.save(user);
     }
-
-
-
-
-
 
 }

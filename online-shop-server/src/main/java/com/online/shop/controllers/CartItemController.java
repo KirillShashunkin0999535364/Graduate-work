@@ -26,9 +26,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-/**
- * Контролер для елементів кошика.
- */
+
 @Tag(name = "3. Контролер елементів кошика", description = "Ці точки входу використовуються для виконання дій з елементами кошика.")
 @SecurityRequirement(name = SwaggerConfig.SECURITY_SCHEME_NAME)
 @RestController
@@ -36,27 +34,12 @@ import java.util.Set;
 @Validated
 public class CartItemController {
 
-    /**
-     * Сервіс елементів кошика.
-     */
     private final CartItemService cartItemService;
 
-    /**
-     * Конструктор.
-     *
-     * @param cartItemService сервіс елементів кошика.
-     */
     public CartItemController(CartItemService cartItemService) {
         this.cartItemService = cartItemService;
     }
 
-
-    /**
-     * Додає елемент кошика.
-     *
-     * @param id ідентифікатор елемента кошика.
-     * @return <code>ResponseEntity</code>
-     */
     @Operation(summary = "Видаляє елемент кошика.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = SwaggerHttpStatus.OK, description = SwaggerMessages.ITEM_SUCCESSFULLY_DELETED,
@@ -79,13 +62,6 @@ public class CartItemController {
 
         return new ResponseEntity<>(successDTO, HttpStatus.OK);
     }
-
-    /**
-     * Змінює кількість елемента кошика.
-     *
-     * @param id ідентифікатор елемента кошика.
-     * @return <code>ResponseEntity</code>
-     */
     @Operation(summary = "Змінює кількість елемента у кошику.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = SwaggerHttpStatus.OK, description = SwaggerMessages.QUANTITY_SUCCESSFULLY_CHANGED,
@@ -109,13 +85,6 @@ public class CartItemController {
         return new ResponseEntity<>(successDTO, HttpStatus.OK);
     }
 
-    /**
-     * Повертає елемент кошика.
-     *
-     * @param id ідентифікатор елемента кошика.
-     * @return <code>ResponseEntity</code>
-     * @throws EntityNotFoundException якщо елемент кошика не може бути знайдений.
-     */
     @Operation(summary = "Повертає елемент з кошика.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = SwaggerHttpStatus.OK, description = SwaggerMessages.RETURNED_CART_ITEM,
@@ -136,13 +105,6 @@ public class CartItemController {
 
         return new ResponseEntity<>(cartItemDTO, HttpStatus.OK);
     }
-
-    /**
-     * Повертає всі елементи кошика.
-     *
-     * @param username ім'я користувача.
-     * @return <code>Список елементів кошика</code>
-     */
     @Operation(summary = "Повертає всі елементи з кошика.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = SwaggerHttpStatus.OK, description = SwaggerMessages.RETURNED_CART_ITEM,

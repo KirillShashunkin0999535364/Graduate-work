@@ -21,9 +21,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-/**
- * Контролер користувачів.
- */
+
 @Tag(name = "1. Користувач", description = "Ці точки доступу використовуються для маніпулювання користувачами.")
 @SecurityRequirement(name = SwaggerConfig.SECURITY_SCHEME_NAME)
 @RestController
@@ -31,27 +29,12 @@ import org.springframework.web.multipart.MultipartFile;
 @Validated
 public class UserController {
 
-    /**
-     * Сервіс користувачів.
-     */
     private final UserService userService;
 
-    /**
-     * Конструктор.
-     *
-     * @param userService це сервіс користувачів.
-     */
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
-
-    /**
-     * Отримати інформацію про користувача за ім'ям користувача.
-     *
-     * @param username це ім'я користувача.
-     * @return <code>ResponseEntity</code>
-     */
     @Operation(summary = "Повертає інформацію про користувача.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = SwaggerHttpStatus.OK, description = SwaggerMessages.USER_INFO_IS_RETURNED,
@@ -68,13 +51,6 @@ public class UserController {
         return new ResponseEntity<>(userInfoDTO, HttpStatus.OK);
     }
 
-    /**
-     * Встановити фото користувача.
-     *
-     * @param username це ім'я користувача.
-     * @param photo це фото користувача.
-     * @return <code>ResponseEntity</code>
-     */
     @Operation(summary = "Оновлює фото користувача.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = SwaggerHttpStatus.OK, description = SwaggerMessages.USER_PHOTO_IS_UPDATED,
@@ -95,12 +71,6 @@ public class UserController {
         return new ResponseEntity<>(successDTO, HttpStatus.OK);
     }
 
-    /**
-     * Повертає фото користувача у вигляді масиву байтів.
-     *
-     * @param username це ім'я користувача.
-     * @return <code>ResponseEntity</code>
-     */
     @Operation(summary = "Повертає фото користувача.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = SwaggerHttpStatus.OK, description = SwaggerMessages.USER_PHOTO_RETURNED,

@@ -26,9 +26,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-/**
- * Контролер для аутентифікації.
- */
+
 @Tag(name = "1. Аутентифікація/Авторизація", description = "Ці точки входу використовуються для реєстрації/входу.")
 @SecurityRequirement(name = SwaggerConfig.SECURITY_SCHEME_NAME)
 @RestController
@@ -36,27 +34,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Validated
 public class AuthController {
 
-    /**
-     * Сервіс аутентифікації/авторизації.
-     */
     private AuthService authService;
 
-    /**
-     * Конструктор.
-     *
-     * @param authService сервіс аутентифікації/авторизації.
-     */
     public AuthController(AuthService authService) {
         this.authService = authService;
     }
 
-    /**
-     * Реєструє нового користувача.
-     *
-     * @param registerDTO дані користувача.
-     * @return <code>ResponseEntity</code>
-     * @throws EntityNotFoundException якщо роль не знайдено.
-     */
     @Operation(summary = "Реєструє нового користувача.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = SwaggerHttpStatus.OK, description = SwaggerMessages.USER_SUCCESSFULLY_REGISTERED,
@@ -76,12 +59,6 @@ public class AuthController {
         return new ResponseEntity<>(successDTO, HttpStatus.OK);
     }
 
-    /**
-     * Вхід користувача.
-     *
-     * @param loginDTO дані користувача.
-     * @return <code>ResponseEntity</code>
-     */
     @Operation(summary = "Дозволяє користувачу увійти і отримати свій JWT-токен.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = SwaggerHttpStatus.OK, description = SwaggerMessages.USER_SIGNED_IN,

@@ -13,23 +13,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-/**
- * Сервіс Algolia, який використовує сервіси Algolia для маніпулювання пошуковим індексом.
- */
+
 @Service
 @Slf4j
 public class AlgoliaService {
-
-    /**
-     * Клієнт пошуку для підключення до індексу Algolia.
-     */
     private final SearchIndex<ProductDTO> index;
-
-    /**
-     * Конструктор.
-     *
-     * @param applicationProperties властивості додатка.
-     */
     public AlgoliaService(ApplicationProperties applicationProperties) {
         SearchClient client = DefaultSearchClient.create(applicationProperties.algoliaApplicationId, applicationProperties.algoliaApiKey);
 
@@ -42,12 +30,6 @@ public class AlgoliaService {
 
         this.index.clearObjects();
     }
-
-    /**
-     * Заповнює індекс переданими продуктами.
-     *
-     * @param products список продуктів для додавання до індексу.
-     */
     public void populateIndex(List<Product> products) {
         List<ProductDTO> productDTOs = new ArrayList<>();
         for (Product product : products) {
@@ -56,30 +38,12 @@ public class AlgoliaService {
 
         this.index.saveObjects(productDTOs).waitTask();
     }
-
-    /**
-     * Додає продукт до індексу.
-     *
-     * @param productDTO продукт для додавання.
-     */
     public void addProductToIndex(ProductDTO productDTO) {
         this.index.saveObject(productDTO);
     }
-
-    /**
-     * Видаляє продукт з індексу.
-     *
-     * @param productId ідентифікатор продукту для видалення.
-     */
     public void deleteProductFromIndex(Long productId) {
         this.index.deleteObject(productId.toString());
     }
-
-    /**
-     * Оновлює продукт.
-     *
-     * @param productDTO DTO продукту.
-     */
     public void updateProduct(ProductDTO productDTO) {
         this.index.partialUpdateObject(productDTO);
     }

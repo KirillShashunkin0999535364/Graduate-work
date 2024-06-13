@@ -3,9 +3,7 @@ package com.online.shop.utils;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-/**
- * Клас, що зберігає властивості.
- */
+
 @Component
 public class ApplicationProperties {
 

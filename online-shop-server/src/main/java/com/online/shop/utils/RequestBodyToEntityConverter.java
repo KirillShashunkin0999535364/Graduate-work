@@ -8,11 +8,12 @@ import com.online.shop.model.dto.CartItemDTO;
 import com.online.shop.model.dto.CategoryDTO;
 import com.online.shop.model.dto.ProductDTO;
 
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class RequestBodyToEntityConverter {
 
     private RequestBodyToEntityConverter() {
-
     }
 
     public static Product convertToProduct(final ProductDTO productDTO) {

@@ -17,19 +17,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Controller advice that handles thrown exceptions in API requests.
- */
+
 @RestControllerAdvice
 @Validated
 public class ApiExceptionHandler {
 
-    /**
-     * Handles the {@link ConstraintViolationException}
-     *
-     * @param e is the thrown exception.
-     * @return <code>ResponseEntity</code>
-     */
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     ResponseEntity<Object> handleConstraintViolationException(ConstraintViolationException e) {
@@ -47,12 +39,7 @@ public class ApiExceptionHandler {
         return new ResponseEntity<>(fieldErrorResponse, HttpStatus.BAD_REQUEST);
     }
 
-    /**
-     * Handles the {@link MethodArgumentNotValidException}
-     *
-     * @param e is the thrown exception.
-     * @return <code>ResponseEntity</code>
-     */
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     ResponseEntity<Object> handleConstraintViolationException(MethodArgumentNotValidException e) {
@@ -70,12 +57,6 @@ public class ApiExceptionHandler {
         return new ResponseEntity<>(fieldErrorResponse, HttpStatus.BAD_REQUEST);
     }
 
-    /**
-     * Handles the {@link EmailAlreadyTakenException}
-     *
-     * @param e is the thrown exception.
-     * @return <code>ResponseEntity</code>
-     */
     @ExceptionHandler(value = {EmailAlreadyTakenException.class})
     @ResponseStatus(value = HttpStatus.CONFLICT)
     public ResponseEntity<CustomErrorResponse> emailAlreadyTakenExceptionHandler(EmailAlreadyTakenException e) {
@@ -87,12 +68,7 @@ public class ApiExceptionHandler {
         return new ResponseEntity<>(errors, HttpStatus.CONFLICT);
     }
 
-    /**
-     * Handles the {@link InvalidInputException}
-     *
-     * @param e is the thrown exception.
-     * @return <code>ResponseEntity</code>
-     */
+
     @ExceptionHandler(value = {InvalidInputException.class})
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ResponseEntity<CustomErrorResponse> invalidInputExceptionHandler(InvalidInputException e) {
@@ -104,12 +80,6 @@ public class ApiExceptionHandler {
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 
-    /**
-     * Handles the {@link UserDoesntExistException}
-     *
-     * @param e is the thrown exception.
-     * @return <code>ResponseEntity</code>
-     */
     @ExceptionHandler(value = {UserDoesntExistException.class})
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     public ResponseEntity<CustomErrorResponse> userDoesntExistExceptionHandler(UserDoesntExistException e) {
@@ -121,12 +91,6 @@ public class ApiExceptionHandler {
         return new ResponseEntity<>(errors, HttpStatus.NOT_FOUND);
     }
 
-    /**
-     * Handles the {@link UsernameAlreadyTakenException}
-     *
-     * @param e is the thrown exception.
-     * @return <code>ResponseEntity</code>
-     */
     @ExceptionHandler(value = {UsernameAlreadyTakenException.class})
     @ResponseStatus(value = HttpStatus.CONFLICT)
     public ResponseEntity<CustomErrorResponse> usernameAlreadyTakenExceptionHandler(UsernameAlreadyTakenException e) {
@@ -138,12 +102,6 @@ public class ApiExceptionHandler {
         return new ResponseEntity<>(errors, HttpStatus.CONFLICT);
     }
 
-    /**
-     * Handles the {@link EntityNotFoundException}
-     *
-     * @param e is the thrown exception.
-     * @return <code>ResponseEntity</code>
-     */
     @ExceptionHandler(value = {EntityNotFoundException.class})
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     public ResponseEntity<CustomErrorResponse> entityNotFoundExceptionHandler(EntityNotFoundException e) {
@@ -155,12 +113,6 @@ public class ApiExceptionHandler {
         return new ResponseEntity<>(errors, HttpStatus.NOT_FOUND);
     }
 
-    /**
-     * Handles the {@link BadCredentialsException}
-     *
-     * @param e is the thrown exception.
-     * @return <code>ResponseEntity</code>
-     */
     @ExceptionHandler(value = {BadCredentialsException.class})
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ResponseEntity<CustomErrorResponse> badCredentialsExceptionHandler(BadCredentialsException e) {
@@ -172,12 +124,6 @@ public class ApiExceptionHandler {
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 
-    /**
-     * Handles the {@link CouldntUploadPhotoException}
-     *
-     * @param e is the thrown exception.
-     * @return <code>ResponseEntity</code>
-     */
     @ExceptionHandler(value = {CouldntUploadPhotoException.class})
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseEntity<CustomErrorResponse> couldntUploadPhotoExceptionHandler(CouldntUploadPhotoException e) {
@@ -189,12 +135,6 @@ public class ApiExceptionHandler {
         return new ResponseEntity<>(errors, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    /**
-     * Handles the {@link AccessDeniedException}
-     *
-     * @param e is the thrown exception.
-     * @return <code>ResponseEntity</code>
-     */
     @ExceptionHandler(value = {AccessDeniedException.class})
     @ResponseStatus(value = HttpStatus.FORBIDDEN)
     public ResponseEntity<CustomErrorResponse> accessDeniedExceptionHandler(AccessDeniedException e) {

@@ -6,9 +6,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
-/**
- * User's roles.
- */
+
 @Getter
 @Setter
 @Entity

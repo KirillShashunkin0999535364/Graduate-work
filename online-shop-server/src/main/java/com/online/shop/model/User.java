@@ -9,9 +9,7 @@ import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
-/**
- * Сутність JPA для користувача.
- */
+
 
 @AllArgsConstructor
 @NoArgsConstructor
