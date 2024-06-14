@@ -5,9 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;
 
-/**
- * JPA Entity for category.
- */
 @Getter
 @Setter
 @AllArgsConstructor
@@ -15,8 +12,5 @@ import lombok.*;
 @Entity(name = "categories")
 @Table(name = "categories")
 public class Category extends BaseEntity {
-    /**
-     * Category's name.
-     */
     private String name;
 }

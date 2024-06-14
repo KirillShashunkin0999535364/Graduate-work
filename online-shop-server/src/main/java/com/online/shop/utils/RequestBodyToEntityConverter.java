@@ -8,24 +8,14 @@ import com.online.shop.model.dto.CartItemDTO;
 import com.online.shop.model.dto.CategoryDTO;
 import com.online.shop.model.dto.ProductDTO;
 
-/**
- * Утилітарний клас, який перетворює тіло запиту в сутність.
- */
+import java.util.Set;
+import java.util.stream.Collectors;
+
 public class RequestBodyToEntityConverter {
 
-    /**
-     * Приватний конструктор для заборони інстанціювання.
-     */
     private RequestBodyToEntityConverter() {
-
     }
 
-    /**
-     * Перетворює об'єкт productDTO в екземпляр сутності product.
-     *
-     * @param productDTO це об'єкт DTO продукту.
-     * @return <code>Product</code>
-     */
     public static Product convertToProduct(final ProductDTO productDTO) {
         Product product = new Product();
         product.setName(productDTO.getName());
@@ -36,12 +26,6 @@ public class RequestBodyToEntityConverter {
         return product;
     }
 
-    /**
-     * Перетворює продукт в об'єкт ProductDTO.
-     *
-     * @param product це сутність продукту.
-     * @return <code>ProductDTO</code>
-     */
     public static ProductDTO convertToProductDTO(final Product product) {
         ProductDTO productDTO = new ProductDTO();
         productDTO.setId(product.getId().toString());
@@ -53,12 +37,6 @@ public class RequestBodyToEntityConverter {
         return productDTO;
     }
 
-    /**
-     * Перетворює сутність елементу кошика в DTO елементу кошика.
-     *
-     * @param cartItem це сутність елементу кошика.
-     * @return <code>CartItemDTO</code>
-     */
     public static CartItemDTO convertToCartItemDTO(CartItem cartItem) {
         CartItemDTO cartItemDTO = new CartItemDTO();
         cartItemDTO.setId(cartItem.getId());
@@ -71,12 +49,6 @@ public class RequestBodyToEntityConverter {
         return cartItemDTO;
     }
 
-    /**
-     * Перетворює сутність категорії в DTO категорії.
-     *
-     * @param category це сутність категорії.
-     * @return <code>CategoryDTO</code>
-     */
     public static CategoryDTO convertToCategoryDTO(Category category) {
         CategoryDTO categoryDTO = new CategoryDTO();
         categoryDTO.setId(category.getId());

@@ -30,51 +30,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.online.shop.utils.RequestBodyToEntityConverter.convertToProductDTO;
-/**
- * Контролер для товарів.
- */
+
 @Tag(name = "2. Контролери товарів", description = "Ці точки входу використовуються для виконання дій з товарами.")
 @SecurityRequirement(name = SwaggerConfig.SECURITY_SCHEME_NAME)
 @RestController
 @RequestMapping("/api/product")
 @Validated
 public class ProductController {
-
-    /**
-     * Сервіс товарів.
-     */
     private final ProductService productService;
-
-    /**
-     * Сервіс Algolia.
-     */
     private final AlgoliaService algoliaService;
-
-    /**
-     * Властивості додатку.
-     */
     private final ApplicationProperties applicationProperties;
 
-    /**
-     * Конструктор.
-     *
-     * @param productService        сервіс товарів.
-     * @param algoliaService        сервіс Algolia.
-     * @param applicationProperties властивості додатку.
-     */
     public ProductController(ProductService productService, AlgoliaService algoliaService, ApplicationProperties applicationProperties) {
         this.productService = productService;
         this.algoliaService = algoliaService;
         this.applicationProperties = applicationProperties;
     }
 
-    /**
-     * Додає товар.
-     *
-     * @param productDTO DTO товару.
-     * @return <code>ResponseEntity</code>
-     * @throws EntityNotFoundException якщо користувач не знайдений.
-     */
     @Operation(summary = "Додає новий товар.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = SwaggerHttpStatus.OK, description = SwaggerMessages.PRODUCT_SUCCESSFULLY_ADDED,
@@ -103,14 +75,6 @@ public class ProductController {
         return new ResponseEntity<>(successDTO, HttpStatus.OK);
     }
 
-    /**
-     * Додає товар до кошика.
-     *
-     * @param id       ідентифікатор товару.
-     * @param quantity кількість товару.
-     * @return <code>ResponseEntity</code>
-     * @throws EntityNotFoundException якщо товар або кошик не знайдені.
-     */
     @Operation(summary = "Додає товар до кошика.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = SwaggerHttpStatus.OK, description = SwaggerMessages.ITEM_SUCCESSFULLY_ADDED,
@@ -133,15 +97,7 @@ public class ProductController {
 
         return new ResponseEntity<>(successDTO, HttpStatus.OK);
     }
-    // Продовження класу ProductController
 
-    /**
-     * Повертає товар.
-     *
-     * @param id ідентифікатор товару.
-     * @return <code>ResponseEntity</code>
-     * @throws EntityNotFoundException якщо елемент кошика не знайдено.
-     */
     @Operation(summary = "Повертає товар.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = SwaggerHttpStatus.OK, description = SwaggerMessages.RETURN_PRODUCT,
@@ -163,13 +119,6 @@ public class ProductController {
         return new ResponseEntity<>(productDTO, HttpStatus.OK);
     }
 
-/**
- * Повертає всі товари.
- /**
- * Повертає всі товари.
- *
- * @return <code>List of ProductDTOs</code>.
- */
 @Operation(summary = "Повертає всі товари.")
 @ApiResponses(value = {
         @ApiResponse(responseCode = SwaggerHttpStatus.OK, description = SwaggerMessages.RETURN_PRODUCTS,
@@ -194,13 +143,6 @@ public ResponseEntity<List<ProductDTO>> getAllProducts() {
     return new ResponseEntity<>(productsDTO, HttpStatus.OK);
 }
 
-    /**
-     * Видаляє товар.
-     *
-     * @param id ідентифікатор товару.
-     * @return <code>ResponseEntity</code>
-     * @throws EntityNotFoundException якщо товар не знайдений.
-     */
     @Operation(summary = "Видаляє товар.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = SwaggerHttpStatus.OK, description = SwaggerMessages.PRODUCT_SUCCESSFULLY_DELETED,
@@ -228,12 +170,6 @@ public ResponseEntity<List<ProductDTO>> getAllProducts() {
         return new ResponseEntity<>(successDTO, HttpStatus.OK);
     }
 
-    /**
-     * Повертає всі товари продавця.
-     *
-     * @param username ім'я користувача-продавця.
-     * @return <code>List of ProductDTOs</code>.
-     */
     @Operation(summary = "Повертає всі товари продавця за ім'ям користувача.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = SwaggerHttpStatus.OK, description = SwaggerMessages.RETURN_SELLER_PRODUCTS,
@@ -257,15 +193,7 @@ public ResponseEntity<List<ProductDTO>> getAllProducts() {
 
         return new ResponseEntity<>(productsDTO, HttpStatus.OK);
     }
-    // Продовження класу ProductController
 
-    /**
-     * Встановлює фотографію товару.
-     *
-     * @param id    ідентифікатор товару.
-     * @param photo фотографія товару.
-     * @return <code>ResponseEntity</code>
-     */
     @Operation(summary = "Оновлює фотографію товару.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = SwaggerHttpStatus.OK, description = SwaggerMessages.PRODUCT_PHOTO_IS_UPDATED,
@@ -286,12 +214,6 @@ public ResponseEntity<List<ProductDTO>> getAllProducts() {
         return new ResponseEntity<>(successDTO, HttpStatus.OK);
     }
 
-    /**
-     * Повертає фотографію товару у вигляді масиву байтів.
-     *
-     * @param id ідентифікатор товару.
-     * @return <code>ResponseEntity</code>
-     */
     @Operation(summary = "Повертає фотографію товару.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = SwaggerHttpStatus.OK, description = SwaggerMessages.PRODUCT_PHOTO_RETURNED,
@@ -308,14 +230,6 @@ public ResponseEntity<List<ProductDTO>> getAllProducts() {
         return new ResponseEntity<>(photo, HttpStatus.OK);
     }
 
-    /**
-     * Оновлює товар.
-     *
-     * @param id         ідентифікатор товару.
-     * @param productDTO DTO товару.
-     * @return <code>ResponseEntity</code>
-     * @throws EntityNotFoundException якщо товар не знайдений.
-     */
     @Operation(summary = "Оновлює товар.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = SwaggerHttpStatus.OK, description = SwaggerMessages.PRODUCT_SUCCESSFULLY_UPDATED,

@@ -9,9 +9,8 @@ import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
-/**
- * Сутність JPA для користувача.
- */
+
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -19,40 +18,27 @@ import java.util.Set;
 @Entity(name = "users")
 @Table(name = "users")
 public class User extends NamedEntity {
-    /**
-     * Кошик користувача.
-     */
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cart_id", referencedColumnName = "id")
     private Cart cart;
-    /**
-     * Продукти користувача.
-     */
+
     @JsonManagedReference
     @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
     private Set<Product> products;
-    /**
-     * Email користувача.
-     */
+
     private String email;
-    /**
-     * Ім'я користувача.
-     */
     private String username;
-    /**
-     * Пароль користувача.
-     */
     private String password;
-    /**
-     * Ролі користувача.
-     */
+
+    private String firstName;
+    private String lastName;
+    private String address;
+    private String phoneNumber;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<Role> roles = new HashSet<>();
 
-    /**
-     * Фото користувача.
-     */
     @Lob
     @Column(name = "photo", length = 100000)
     @Nullable

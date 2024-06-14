@@ -21,34 +21,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-/**
- * Контролер для категорій.
- */
+
 @Tag(name = "5. Категорії", description = "Ці точки входу використовуються для управління категоріями.")
 @SecurityRequirement(name = SwaggerConfig.SECURITY_SCHEME_NAME)
 @RestController
 @RequestMapping("/api/categories")
 public class CategoryController {
 
-    /**
-     * Сервіс категорій.
-     */
     private CategoryService categoryService;
 
-    /**
-     * Конструктор.
-     *
-     * @param categoryService сервіс категорій.
-     */
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 
-    /**
-     * Отримує всі категорії.
-     *
-     * @return <code>Набір категорій</code>
-     */
     @Operation(summary = "Отримує всі категорії.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = SwaggerHttpStatus.OK, description = SwaggerMessages.CATEGORIES_SUCCESSFULLY_RETRIEVED,

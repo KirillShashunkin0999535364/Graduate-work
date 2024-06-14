@@ -17,48 +17,23 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 import java.util.Set;
 
-/**
- * Реалізація для сервісу елементів кошика.
- */
+
 @Service
 public class CartItemServiceImpl implements CartItemService {
 
-    /**
-     * Репозиторій елементів кошика.
-     */
     private final CartItemRepository cartItemRepository;
 
-    /**
-     * Репозиторій користувачів.
-     */
     private final UserRepository userRepository;
 
-    /**
-     * Повідомлення про відмову в доступі.
-     */
     private final static String ACCESS_DENIED_MESSAGE = "access_denied";
 
-    /**
-     * Повідомлення про відсутність елемента кошика.
-     */
     private final static String CART_ITEM_NOT_FOUND_MESSAGE = "cartitem_not_found";
 
-    /**
-     * Конструктор для внедрення залежностей.
-     *
-     * @param cartItemRepository репозиторій елементів кошика.
-     * @param userRepository     репозиторій користувачів.
-     */
     public CartItemServiceImpl(CartItemRepository cartItemRepository, UserRepository userRepository) {
         this.cartItemRepository = cartItemRepository;
         this.userRepository = userRepository;
     }
 
-    /**
-     * Видаляє елемент кошика.
-     *
-     * @param id ідентифікатор елемента кошика.
-     */
     @Override
     public void deleteCartItem(final Long id) {
         Optional<CartItem> cartItemOptional = cartItemRepository.findById(id);
@@ -82,12 +57,6 @@ public class CartItemServiceImpl implements CartItemService {
         cartItemRepository.deleteById(id);
     }
 
-    /**
-     * Змінює кількість елемента кошика.
-     *
-     * @param id       ідентифікатор елемента кошика.
-     * @param quantity кількість елемента кошика.
-     */
     @Override
     public void changeQuantity(final Long id, final Integer quantity) {
         Optional<CartItem> cartItemOptional = cartItemRepository.findById(id);
@@ -109,12 +78,6 @@ public class CartItemServiceImpl implements CartItemService {
         }
     }
 
-    /**
-     * Повертає елемент кошика.
-     *
-     * @param id ідентифікатор елемента кошика.
-     * @return <code>CartItem</code>
-     */
     @Override
     public CartItem getCartItem(final Long id) {
         Optional<CartItem> cartItemOptional = cartItemRepository.findById(id);
@@ -135,12 +98,6 @@ public class CartItemServiceImpl implements CartItemService {
         }
     }
 
-    /**
-     * Повертає всі елементи кошика.
-     *
-     * @param username ім'я користувача.
-     * @return <code>Set of CartItem</code>
-     */
     @Override
     public Set<CartItem> getCartItems(final String username) {
         Optional<User> userOptional = userRepository.findByUsername(username);
@@ -162,11 +119,6 @@ public class CartItemServiceImpl implements CartItemService {
         }
     }
 
-    /**
-     * Зберігає елемент кошика.
-     *
-     * @param cartItem елемент кошика.
-     */
     @Override
     public void save(final CartItem cartItem) {
         cartItemRepository.save(cartItem);

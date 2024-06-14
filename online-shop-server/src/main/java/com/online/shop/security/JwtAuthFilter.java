@@ -15,27 +15,14 @@ import java.io.IOException;
 import static com.online.shop.security.SecurityConstants.AUTH_HEADER;
 import static com.online.shop.security.SecurityConstants.JWT_HEADER;
 
-/**
- * JWT Auth Filter.
- */
+
 public class JwtAuthFilter extends OncePerRequestFilter {
 
-    /**
-     * JWT Token generator.
-     */
     private final JwtProvider tokenGenerator;
 
-    /**
-     * Custom user details service.
-     */
     private final CustomUserDetailsService customUserDetailsService;
 
-    /**
-     * Constructor.
-     *
-     * @param tokenGenerator           is the token generator.
-     * @param customUserDetailsService is the service that deals with user's details.
-     */
+
     public JwtAuthFilter(JwtProvider tokenGenerator, CustomUserDetailsService customUserDetailsService) {
         this.tokenGenerator = tokenGenerator;
         this.customUserDetailsService = customUserDetailsService;
@@ -59,12 +46,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
-    /**
-     * Extracts JWT token from request.
-     *
-     * @param request is the client's request.
-     * @return JWT Token.
-     */
     private String getJWTFromRequest(HttpServletRequest request) {
         String bearerToken = request.getHeader(AUTH_HEADER);
 
